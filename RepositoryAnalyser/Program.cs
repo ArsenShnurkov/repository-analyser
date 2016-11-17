@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.CodeDom.Compiler;
 using Mono.Options;
 
 namespace RepositoryAnalyser
 {
-	class MainClass
+	partial class MainClass
 	{
 		public static void Main(string[] args)
 		{
@@ -17,19 +18,19 @@ namespace RepositoryAnalyser
 			{
 				ShowHelp();
 			}
-			foreach (string url in unparsed)
+			using (var writer = new IndentedTextWriter(Console.Out))
 			{
-				ProcessUrl(url);
+				foreach (string dir in unparsed)
+				{
+					var ctx = new ProcessingContext(writer);
+					ProcessDirectory(dir, ctx);
+				}
 			}
-		}
-		static void ProcessUrl(string url)
-		{
-			Console.WriteLine(url);
 		}
 		public static void ShowHelp()
 		{
 			Console.WriteLine("Usage: ");
-			Console.WriteLine("\trepository-analyser http://github.com/Arsen.Shnurkov/repository-analyser");
+			Console.WriteLine("\trepository-analyser /var/calculate/remote/distfiles/egit-src/repository-analyser.git");
 			Console.WriteLine("\trepository-analyser -h");
 			Environment.Exit(0);
 		}
