@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.CodeDom.Compiler;
@@ -20,8 +21,15 @@ namespace RepositoryAnalyser
 				var listOfFiles = Directory.EnumerateFiles(path, "*.sln", SearchOption.AllDirectories);
 				foreach (string file in listOfFiles)
 				{
-					var sln = SolutionFile.FromFile(file);
-					ProcessSolution(sln, ctx);
+					try
+					{
+						var sln = SolutionFile.FromFile(file);
+						ProcessSolution(sln, ctx);
+					}
+					catch (Exception ex)
+					{
+						ctx.Writer.Write("Error while processing solution: " + ex.ToString());
+					}
 				}
 			}
 			finally
@@ -48,7 +56,14 @@ namespace RepositoryAnalyser
 			{
 				foreach (var csproj in sln.Projects)
 				{
-					ProcessProject(csproj, ctx);
+					try
+					{
+						ProcessProject(csproj, ctx);
+					}
+					catch (Exception ex)
+					{
+						ctx.Writer.WriteLine("Exception: " + ex.ToString());
+					}
 				}
 			}
 			finally
@@ -93,9 +108,16 @@ namespace RepositoryAnalyser
 					ctx.Writer.WriteLine("Reference: " + id);
 					ctx.Count.Add(id, flag);
 				}
-				foreach (Project proj in csproj.Dependencies)
+				try
 				{
-					ctx.Writer.WriteLine("ProjectReference: " + proj.FullPath);
+					foreach (Project proj in csproj.Dependencies)
+					{
+						ctx.Writer.WriteLine("ProjectReference: " + proj.FullPath);
+					}
+				}
+				catch (Exception ex)
+				{
+					ctx.Writer.WriteLine("Exception: " + ex.ToString());
 				}
 			}
 			finally
