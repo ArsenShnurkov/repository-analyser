@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using System.CodeDom.Compiler;
-using CWDev.SLNTools.Core;
+using MetaSpecTools;
 using System.Reflection;
 using mptcore;
 
@@ -14,16 +15,17 @@ namespace RepositoryAnalyser
 		static GacTools gac = new GacTools();
 		static void ProcessDirectory(string path, ProcessingContext ctx)
 		{
+			var rep = new Repository(path);
 			ctx.Writer.WriteLine("Processing directory: " + path);
 			ctx.Writer.Indent++;
 			try
 			{
-				var listOfFiles = Directory.EnumerateFiles(path, "*.sln", SearchOption.AllDirectories);
+				var listOfFiles = Directory.EnumerateFiles(path, "*" + SolutionFile.DefaultExtension, SearchOption.AllDirectories);
 				foreach (string file in listOfFiles)
 				{
 					try
 					{
-						var sln = SolutionFile.FromFile(file);
+						var sln = SolutionFile.FromFile(file, rep);
 						ProcessSolution(sln, ctx);
 					}
 					catch (Exception ex)
@@ -38,7 +40,7 @@ namespace RepositoryAnalyser
 			}
 			ctx.Writer.WriteLine("Summary:");
 			var libs = new SortedList<string,bool>();
-			foreach (var item in ctx.Count)
+			foreach (var item in ctx.ReferenceCount)
 			{
 				libs.Add($"{item.Value} {item.Key}", false);
 			}
@@ -49,12 +51,16 @@ namespace RepositoryAnalyser
 		}
 		static void ProcessSolution(SolutionFile sln, ProcessingContext ctx)
 		{
-			var fileName = new FileInfo(sln.SolutionFullPath).FullName; // Normalise name
+			var fileName = new FileInfo(sln.SolutionFullName).FullName; // Normalise name
 			ctx.Writer.WriteLine("Processing solution: " + fileName);
 			ctx.Writer.Indent++;
 			try
 			{
-				foreach (var csproj in sln.Projects)
+				if (sln.Projects.Count == 0)
+				{
+					Debugger.Break();
+				}
+				foreach (Project csproj in sln.Projects)
 				{
 					try
 					{
@@ -87,7 +93,7 @@ namespace RepositoryAnalyser
 					{
 						shortName = id.Substring(0, index);
 					}
-					if (ctx.Count.ContainsKey(id) || ctx.Count.ContainsKey(shortName))
+					if (ctx.ReferenceCount.ContainsKey(id) || ctx.ReferenceCount.ContainsKey(shortName))
 					{
 						continue;
 					}
@@ -106,7 +112,7 @@ namespace RepositoryAnalyser
 						}
 					}
 					ctx.Writer.WriteLine("Reference: " + id);
-					ctx.Count.Add(id, flag);
+					ctx.ReferenceCount.Add(id, flag);
 				}
 				try
 				{

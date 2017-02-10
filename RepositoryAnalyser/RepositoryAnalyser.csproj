@@ -28,7 +28,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <ConsolePause>false</ConsolePause>
     <ExternalConsole>false</ExternalConsole>
-    <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/xunit.git</Commandlineparameters>
+    <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/lucene.net.git</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/SpecFlow.git</Commandlineparameters>
@@ -48,7 +48,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\slntools.git\Main\CWDev.SLNTools.Core.dll\CWDev.SLNTools.Core.dll.csproj">
       <Project>{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}</Project>
-      <Name>CWDev.SLNTools.Core.dll</Name>
+      <Name>MetaSpecTools</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\mono-packaging-tools.git\mpt-core\mpt-core.csproj">
       <Project>{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}</Project>

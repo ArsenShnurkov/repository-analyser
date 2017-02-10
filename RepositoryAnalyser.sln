@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryAnalyser", "RepositoryAnalyser\RepositoryAnalyser.csproj", "{9959A405-E046-4F66-8601-B623089BAD69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CWDev.SLNTools.Core.dll", "..\slntools.git\Main\CWDev.SLNTools.Core.dll\CWDev.SLNTools.Core.dll.csproj", "{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mpt-core", "..\mono-packaging-tools.git\mpt-core\mpt-core.csproj", "{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetaSpecTools", "..\slntools.git\Main\MetaSpecTools\MetaSpecTools.csproj", "{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,6 @@ Global
 		{9959A405-E046-4F66-8601-B623089BAD69}.Debug|x86.Build.0 = Debug|Any CPU
 		{9959A405-E046-4F66-8601-B623089BAD69}.Release|x86.ActiveCfg = Release|Any CPU
 		{9959A405-E046-4F66-8601-B623089BAD69}.Release|x86.Build.0 = Release|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|x86.Build.0 = Debug|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|x86.ActiveCfg = Release|Any CPU
-		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|x86.Build.0 = Release|Any CPU
 		{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,5 +33,13 @@ Global
 		{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}.Debug|x86.Build.0 = Debug|Any CPU
 		{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}.Release|x86.ActiveCfg = Release|Any CPU
 		{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}.Release|x86.Build.0 = Release|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Debug|x86.Build.0 = Debug|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|x86.ActiveCfg = Release|Any CPU
+		{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

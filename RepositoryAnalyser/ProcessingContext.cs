@@ -5,12 +5,8 @@ namespace RepositoryAnalyser
 {
 	public class ProcessingContext
 	{
-		public ProcessingContext(IndentedTextWriter writer)
-		{
-			this.writer = writer;
-			this.Count = new SortedDictionary<string, string>();
-		}
 		IndentedTextWriter writer;
+
 		public IndentedTextWriter Writer
 		{
 			get
@@ -18,7 +14,13 @@ namespace RepositoryAnalyser
 				return writer;
 			}
 		}
-		public SortedDictionary<string, string> Count { get; }
+
+		public SortedDictionary<string, string> ReferenceCount { get; }
+
+		public ProcessingContext(IndentedTextWriter writer)
+		{
+			this.writer = writer;
+			this.ReferenceCount = new SortedDictionary<string, string>();
+		}
 	}
 }
-
