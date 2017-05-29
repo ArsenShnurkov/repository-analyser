@@ -28,7 +28,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <ConsolePause>false</ConsolePause>
     <ExternalConsole>false</ExternalConsole>
-    <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/xunit.git</Commandlineparameters>
+    <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/XmlNotepad.git</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/SpecFlow.git</Commandlineparameters>

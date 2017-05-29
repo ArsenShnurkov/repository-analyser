@@ -6,6 +6,7 @@ using System.CodeDom.Compiler;
 using CWDev.SLNTools.Core;
 using System.Reflection;
 using mptcore;
+using BuildAutomation;
 
 namespace RepositoryAnalyser
 {
@@ -71,13 +72,19 @@ namespace RepositoryAnalyser
 				ctx.Writer.Indent--;
 			}
 		}
-		static void ProcessProject(Project csproj, ProcessingContext ctx)
+		static void ProcessProject(Project slnproj, ProcessingContext ctx)
 		{
-			var fileName = new FileInfo(csproj.FullPath).FullName; // Normalise name
+			var fileName = new FileInfo(slnproj.FullPath).FullName; // Normalise name
 			ctx.Writer.WriteLine("Processing project: " + fileName);
 			ctx.Writer.Indent++;
 			try
 			{
+				if (slnproj.ProjectTypeGuid != KnownProjectTypeGuid.CSharp)
+				{
+					ctx.Writer.WriteLine($"unknown project type {slnproj.ProjectTypeGuid}");
+					return;
+				}
+				CSharpLibraryProject csproj = new CSharpLibraryProject(fileName);
 				foreach (ReferencedAssembly asm in csproj.References)
 				{
 					var id = asm.AssemblyName;
@@ -110,10 +117,10 @@ namespace RepositoryAnalyser
 				}
 				try
 				{
-					foreach (Project proj in csproj.Dependencies)
+					/*foreach (CSharpLibraryProject proj in csproj.Dependencies)
 					{
-						ctx.Writer.WriteLine("ProjectReference: " + proj.FullPath);
-					}
+						ctx.Writer.WriteLine("ProjectReference: " + proj.FileName);
+					}*/
 				}
 				catch (Exception ex)
 				{
