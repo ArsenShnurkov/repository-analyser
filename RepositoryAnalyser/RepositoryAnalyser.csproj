@@ -6,7 +6,8 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>RepositoryAnalyser</RootNamespace>
     <AssemblyName>repository-analyser</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,18 +27,22 @@
     <ExternalConsole>true</ExternalConsole>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <ConsolePause>false</ConsolePause>
-    <ExternalConsole>false</ExternalConsole>
-    <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/XmlNotepad.git</Commandlineparameters>
+    <ConsolePause>true</ConsolePause>
+    <ExternalConsole>true</ExternalConsole>
+    <Commandlineparameters>convert /a/aa/aaa/aaaa /b/bb/bbb/bbbb</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/SpecFlow.git</Commandlineparameters>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Mono.Options, Version=4.4.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
-      <Package>mono-options-4.4.0.0</Package>
+    <Reference Include="Mono.TextTemplating">
+      <HintPath>..\..\..\..\..\..\share\dev-dotnet\t4\Mono.TextTemplating.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Options">
+      <HintPath>..\..\..\..\..\..\share\dev-dotnet\mono-options\Mono.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -46,14 +51,23 @@
     <Compile Include="ProcessingContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\slntools.git\Main\CWDev.SLNTools.Core.dll\CWDev.SLNTools.Core.dll.csproj">
+    <ProjectReference Include="..\..\..\slntools\ArsenShnurkov\Main\CWDev.SLNTools.Core.dll\CWDev.SLNTools.Core.dll.csproj">
       <Project>{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}</Project>
       <Name>CWDev.SLNTools.Core.dll</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\mono-packaging-tools.git\mpt-core\mpt-core.csproj">
+    <ProjectReference Include="..\..\..\mono-packaging-tools\ArsenShnurkov\mpt-core\mpt-core.csproj">
       <Project>{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}</Project>
       <Name>mpt-core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ebuild-tempate.t4">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="makefile-template.t4" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

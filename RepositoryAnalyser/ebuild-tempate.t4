@@ -1,0 +1,15 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.dll" #>
+<#@ import namespace="System" #>
+<#@ parameter name="CurrentYear" type="System.Int32" #>
+<#@ parameter name="Model" type="System.String" #>
+# Copyright 1999-<#= CurrentYear #> Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
+EAPI="6"
+
+KEYWORDS="~amd64 ~x86"
+RESTRICT="mirror"
+
+<#=Model.ToString() #>

@@ -13,9 +13,9 @@ namespace RepositoryAnalyser
 	partial class MainClass
 	{
 		static GacTools gac = new GacTools();
-		static void ProcessDirectory(string path, ProcessingContext ctx)
+		static void ProcessSourcesRepository(string path, ProcessingContext ctx)
 		{
-			ctx.Writer.WriteLine("Processing directory: " + path);
+			ctx.Writer.WriteLine("Processing sources repository: " + path);
 			ctx.Writer.Indent++;
 			try
 			{
@@ -84,12 +84,13 @@ namespace RepositoryAnalyser
 					ctx.Writer.WriteLine($"unknown project type {slnproj.ProjectTypeGuid}");
 					return;
 				}
-				CSharpLibraryProject csproj = new CSharpLibraryProject(fileName);
-				foreach (ReferencedAssembly asm in csproj.References)
+				var csproj = new ProjectAssemblyCSharp();
+				csproj.Load(fileName);
+				foreach (var asm in csproj.References)
 				{
-					var id = asm.AssemblyName;
+					var id = asm.AssemblyVersion.AssemblyName;
 					string shortName = id;
-					int index = id.IndexOf(",");
+					int index = id.IndexOf(",", StringComparison.InvariantCulture);
 					if (index >= 0)
 					{
 						shortName = id.Substring(0, index);

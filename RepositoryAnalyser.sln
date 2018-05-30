@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryAnalyser", "RepositoryAnalyser\RepositoryAnalyser.csproj", "{9959A405-E046-4F66-8601-B623089BAD69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CWDev.SLNTools.Core.dll", "..\slntools.git\Main\CWDev.SLNTools.Core.dll\CWDev.SLNTools.Core.dll.csproj", "{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CWDev.SLNTools.Core.dll", "..\..\slntools\ArsenShnurkov\Main\CWDev.SLNTools.Core.dll\CWDev.SLNTools.Core.dll.csproj", "{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mpt-core", "..\mono-packaging-tools.git\mpt-core\mpt-core.csproj", "{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mpt-core", "..\..\mono-packaging-tools\ArsenShnurkov\mpt-core\mpt-core.csproj", "{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
