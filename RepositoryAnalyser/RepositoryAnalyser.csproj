@@ -29,7 +29,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <ConsolePause>true</ConsolePause>
     <ExternalConsole>true</ExternalConsole>
-    <Commandlineparameters>convert /a/aa/aaa/aaaa /b/bb/bbb/bbbb</Commandlineparameters>
+    <Commandlineparameters>convert /usr/src/git/github.com/npgsql/npgsql/src/Npgsql/Npgsql.csproj ~/npgsql.ebuild</Commandlineparameters>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Commandlineparameters>/var/calculate/remote/distfiles/egit-src/SpecFlow.git</Commandlineparameters>
@@ -43,6 +43,10 @@
       <HintPath>..\..\..\..\..\..\share\dev-dotnet\mono-options\Mono.Options.dll</HintPath>
     </Reference>
     <Reference Include="System.Configuration" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="CWDev.SLNTools.Core">
+      <HintPath>..\..\..\..\..\..\share\dev-dotnet\slntools-1\CWDev.SLNTools.Core.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
@@ -51,10 +55,6 @@
     <Compile Include="ProcessingContext.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\slntools\ArsenShnurkov\Main\CWDev.SLNTools.Core.dll\CWDev.SLNTools.Core.dll.csproj">
-      <Project>{055CF73F-58D6-4E8F-89B0-3FDDC5CC57F5}</Project>
-      <Name>CWDev.SLNTools.Core.dll</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\mono-packaging-tools\ArsenShnurkov\mpt-core\mpt-core.csproj">
       <Project>{36FB2731-AAFA-4D77-B406-EC3AAEA2995F}</Project>
       <Name>mpt-core</Name>
